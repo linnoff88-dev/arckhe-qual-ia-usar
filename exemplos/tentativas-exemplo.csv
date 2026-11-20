@@ -1,0 +1,16 @@
+modelo,execucao,tokens_entrada,tokens_saida,custo_usd,aprovada
+Gemini 4 Argon,1,12000,4000,,sim
+Gemini 4 Argon,2,12000,4200,,não
+Gemini 4 Argon,2,14000,3000,,sim
+Gemini 4 Argon,3,12000,3900,,sim
+Gemini 4 Hydrogen,1,12000,5000,,não
+Gemini 4 Hydrogen,1,15000,5000,,não
+Gemini 4 Hydrogen,2,12000,4800,,sim
+Gemini 4 Hydrogen,3,12000,5100,,não
+Claude Haiku 5.5,1,12000,4500,,sim
+Claude Haiku 5.5,2,12000,4400,,não
+Claude Haiku 5.5,2,14000,2000,,sim
+Claude Haiku 5.5,3,12000,4300,,sim
+GPT-6.2 Sol,1,12000,3500,,sim
+GPT-6.2 Sol,2,12000,3600,,sim
+GPT-6.2 Sol,3,12000,3400,,sim

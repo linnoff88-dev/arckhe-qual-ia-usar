@@ -1,0 +1,3 @@
+modelo,execucao,tokens_entrada,tokens_saida,custo_usd,aprovada,nota,tempo_s,motivo,tokens_entrada_bruto
+Gemini 4 Hydrogen,1,245,863,0.006840,sim,10,5.4,"O CSV tem exatamente as três linhas válidas no formato correto, a duplicata C-101 é apontada e contada uma só vez, C-104 é separado como item sem valor e o total de 3170 centavos está correto.",245
+Gemini 4 Hydrogen,2,245,1357,0.010545,sim,9,7.2,"O CSV tem exatamente as três linhas válidas corretas (C-101, C-102, C-103) com datas ISO e valores em centavos, a duplicata de C-101 é apontada e contada uma vez, C-104 está separado como sem valor e o total de 3170 centavos está correto; o único deslize é dizer 'linhas 1 e 3' para C-101, o que é coerente com a ordem da tabela.",245

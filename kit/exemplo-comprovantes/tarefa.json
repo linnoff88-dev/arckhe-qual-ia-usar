@@ -1,0 +1,7 @@
+{
+  "nome": "comprovantes",
+  "pedido_arquivo": "pedido.md",
+  "criterio": "Entrega um CSV com as colunas id, data (formato AAAA-MM-DD) e valor em centavos, com exatamente três linhas válidas: C-101 (2026-11-19, 1240), C-102 (2026-11-19, 930) e C-103 (2026-11-20, 1000). Aponta que C-101 aparece duas vezes (duplicata, contada uma vez só) e separa C-104 como item sem valor. Informa o total válido de 3170 centavos.",
+  "verificar": "python3 verificar.py",
+  "repeticoes": 3
+}

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Qué IA usar - GEMINI - GPT - CLAUDE</title>
+<meta content="El precio del token engaña. Compara Gemini 4 (Neon, Argon, Hydrogen), Claude (Fable, Opus, Sonnet, Haiku) y OpenAI (Astra, Sol, Luna) por el costo de cada entrega correcta. Datos del 19/11/2026, gratis." name="description"/>
+<meta content="Qué IA usar - GEMINI - GPT - CLAUDE" property="og:title"/>
+<meta content="Gemini 4, Claude y OpenAI comparados por lo que importa: cuánto cuesta cada entrega correcta." property="og:description"/>
+<meta content="https://inematds.github.io/qual-ia-usar/guia/assets/banner-es.jpg" property="og:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --fill:#FACC15; --tint:rgba(250,204,21,.12); --ok:#7CE0C6; --bad:#F0918A;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --fill:#FACC15; --tint:#FEF9C3; --ok:#0E6B55; --bad:#A83426;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light nav{background:rgba(246,247,249,.85)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light main a:not(.btn),body.light footer a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  p code,li code,td code{font-size:.9em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:var(--tint)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--fill);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  nav .links a.sec{white-space:nowrap}
+  @media(max-width:1360px){nav .links a.opt{display:none}}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.025em}
+  .hero h1.big{font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.02;letter-spacing:-.03em}
+  .hero h1.big .amb{display:block;white-space:nowrap;font-size:clamp(1.55rem,3.75vw,3.1rem);letter-spacing:-.035em;margin-top:.12em}
+  .hero p.gancho{font:800 clamp(1.15rem,2.2vw,1.5rem)/1.3 Sora,sans-serif;color:var(--txt);margin:.9em 0 0;max-width:30ch}
+  .plat{display:none}
+  @media(max-width:600px){.plat{display:inline;font-weight:700;color:var(--amb)}}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;margin:.4em 0 0}
+  pre .c{color:#7d7d8a} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:28px}
+  .step>div{min-width:0}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--fill);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .5em}
+  .quem{display:inline-block;font-family:Sora;font-size:.75rem;letter-spacing:.06em;color:var(--txt);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.1em .7em;margin-left:.5em;vertical-align:middle;font-weight:600}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* números */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat b{display:block;font:800 clamp(1.9rem,4vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.02em;color:var(--amb)}
+  body.light .stat b{color:var(--txt)}
+  .stat span{display:block;color:var(--mut);font-size:.93rem;margin-top:.5em}
+  .fonte{font-size:.86rem;color:var(--mut);margin-top:14px;max-width:80ch}
+  /* trocas */
+  .troca{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+  .troca:first-of-type{border-top:none}
+  .troca .n{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font:800 1.6rem Sora,sans-serif;color:var(--amb)}
+  body.light .troca .n{color:var(--txt);background:var(--fill);border-color:var(--fill)}
+  .troca h3{font-size:1.3rem;margin-bottom:.35em}
+  .troca p{margin:.35em 0;max-width:72ch}
+  .troca .ex{margin-top:.8em;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fill);border-radius:10px;padding:12px 16px;font-size:.95rem;color:var(--mut);max-width:76ch}
+  .troca .ex b{color:var(--txt)}
+  @media(max-width:540px){.troca{grid-template-columns:1fr}}
+  /* três finais */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;max-width:900px}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.93rem}
+  .vs strong{display:block;font-family:Sora;margin-bottom:.25em}
+  .vs .r{display:block;margin-top:.5em;font-weight:600}
+  .vs .r.bad{color:var(--bad)} .vs .r.ok{color:var(--ok)}
+  .card ul{margin:8px 0 0;padding-left:20px}.card li{margin:5px 0}
+  /* prova */
+  .prova{background:var(--card);border:1px solid var(--amb);border-radius:16px;padding:26px 26px 22px;margin-top:6px}
+  body.light .prova{border-color:#EAB308}
+  .tl{list-style:none;margin:0;padding:0;counter-reset:t}
+  .tl li{position:relative;padding:0 0 18px 48px;counter-increment:t}
+  .tl li::before{content:counter(t);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;background:var(--fill);color:#1a1206;font:800 .95rem/32px Sora,sans-serif;text-align:center}
+  .tl li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl b{font-family:Sora}
+  blockquote{margin:6px 0 0;padding:14px 18px;border-left:3px solid var(--fill);background:var(--bg2);border-radius:0 10px 10px 0;font-size:1.02rem}
+  .prova .rod{font-size:.86rem;color:var(--mut);margin-top:14px}
+  /* parte técnica */
+  .techhead{background:var(--bg2);border-top:3px solid var(--fill);padding:58px 0 8px}
+  .techhead h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin:.3em 0 0}
+  .techhead .sub{color:var(--mut);margin:.6em 0 1.2em;max-width:66ch}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+  .tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-family:Sora;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
+  /* barras */
+  .bars{display:grid;gap:10px;margin-top:8px}
+  .bar{display:grid;grid-template-columns:150px minmax(0,1fr) 64px;gap:12px;align-items:center;font-size:.92rem}
+  .bar .nm{font-family:Sora;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar .tr{background:var(--bg2);border:1px solid var(--line);border-radius:999px;height:18px;overflow:hidden}
+  .bar .fi{height:100%;border-radius:999px;background:var(--mut)}
+  .bar .fi.g{background:#4f8df5} .bar .fi.a{background:#d9a06b} .bar .fi.o{background:#7CE0C6}
+  .bar .v{font-family:Sora;font-weight:800;text-align:right}
+  @media(max-width:540px){.bar{grid-template-columns:96px minmax(0,1fr) 54px;font-size:.82rem}}
+  .leg{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--mut);margin-top:10px}
+  .leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  /* faixas */
+  .faixa{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:18px}
+  .faixa h3{font-size:1.25rem;margin-bottom:.2em}
+  .faixa .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  @media(max-width:720px){.faixa .tres{grid-template-columns:1fr}}
+  .faixa .tres div{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .faixa .tres b{display:block;font-family:Sora}
+  .faixa .tres .pz{font:800 1.35rem Sora,sans-serif;color:var(--amb);display:block;margin-top:4px}
+  body.light .faixa .tres .pz{color:var(--txt)}
+  .faixa .tres small{color:var(--mut);display:block}
+  .veredito{margin-top:14px;border-left:3px solid var(--fill);padding:8px 14px;background:var(--bg2);border-radius:0 10px 10px 0}
+  /* calculadora */
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  @media(max-width:640px){.calc{grid-template-columns:1fr}}
+  .calc label{display:block;font-size:.88rem;color:var(--mut);margin-top:10px}
+  .calc input{width:100%;margin-top:4px;background:var(--bg2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:8px 10px;font:600 1rem Inter,sans-serif}
+  .calc .res{font:800 1.7rem Sora,sans-serif;color:var(--amb);margin-top:12px}
+  body.light .calc .res{color:var(--txt)}
+  .calcfim{margin-top:14px;font-size:1.05rem}
+</style>
+<link href="https://inematds.github.io/qual-ia-usar/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/qual-ia-usar/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/qual-ia-usar/guia/es/" hreflang="es" rel="alternate"/></head>
+<body>
+<nav><div class="wrap">
+<a class="brand" href="#top"><span class="emoji">⚖️</span> Qué IA usar</a>
+<span class="sep">|</span>
+<span class="clubpro">
+<a class="inema" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+<span class="sep">-</span>
+<a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
+</span>
+<div class="links">
+<a class="sec" href="#explicado">Lo que ganas</a>
+<a class="sec" href="#faixas">Quién gana</a>
+<a class="sec opt" href="#comparacoes">Comparaciones</a>
+<a class="sec opt" href="#dia">En tu día a día</a>
+<a class="sec opt" href="#como">Cómo funciona</a>
+<a class="sec opt" href="#pratica">En la práctica</a>
+<a class="sec opt" href="#gemini-pro">Gemini Pro</a>
+<a class="sec" href="#comecar">Cómo empezar</a>
+<a class="sec" href="#base">Fuentes</a>
+<span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
+<button aria-label="Cambiar tema" class="tgl" id="themeToggle" title="Cambiar tema">🌙</button>
+<a class="btn" href="https://github.com/inematds/qual-ia-usar" rel="noopener" target="_blank">GitHub</a>
+</div>
+</div></nav>
+<header class="hero" id="top">
+<div class="glow"></div>
+<div class="wrap">
+<div>
+<span class="chip">Precios oficiales + Agent Arena · 19/11/2026 · gratis</span>
+<h1 class="big">Qué IA usar<span class="amb">GEMINI - GPT - CLAUDE</span></h1>
+<p class="gancho">La IA más barata de la tabla puede salirte más cara en la cuenta.</p>
+<p class="lead" style="margin-top:.8em">Eliges la IA por el precio de la tabla. Se equivoca, vuelves a pedirlo y cada intento cuesta: dinero, si pagas por uso, o parte de tu límite, si pagas una suscripción. Aquí comparas las IA de Google, Anthropic y OpenAI por el <strong>costo por entrega correcta</strong>: lo que gastas hasta recibir la tarea hecha.</p>
+<div class="cta">
+<a class="btn" href="#faixas">Quién gana en cada rango</a>
+<a class="btn ghost" href="#comecar">Prueba con tu tarea</a>
+</div>
+</div>
+<figure><img alt="Qué IA sale más barata: Google, Claude y OpenAI por el costo de cada entrega correcta" src="../assets/banner-es.jpg"/></figure>
+</div>
+</header>
+<main>
+<section class="resumo" id="resumo"><div class="wrap">
+<span class="chip">En una frase</span>
+<p><strong>Este proyecto compara diez modelos de IA de tres empresas</strong>: Gemini 4 de Google (Neon, Argon y Hydrogen), Claude de Anthropic (Fable, Opus, Sonnet y Haiku) y los modelos de OpenAI que usa Codex (Astra, Sol y Luna). Reúne las tablas oficiales de precios y el marcador de Agent Arena, un marcador público que mide agentes de IA (IA que ejecutan una tarea por sí solos, paso a paso) al realizar trabajos reales, consultados el 19/11/2026. Sirve para quienes pagan por IA y quieren elegir sin desperdiciar dinero. Para leerlo, no necesitas nada. Para probarlo con tu propia tarea, basta con las apps que ya usas (ChatGPT, Claude o Gemini), o con el <strong>kit de pruebas</strong>, que ejecuta la misma tarea en todas las IA y dice cuál acertó más y gastó menos.</p>
+<figure style="margin:22px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img alt="Qué IA sale más barata: el precio que engaña, los 3 rangos, quién gana en cada uno, tu propia prueba, cómo empezar, la prueba" loading="lazy" src="../assets/banner-grade-es.jpg" style="width:100%;display:block"/></figure>
+</div></section>
+<section id="explicado"><div class="wrap">
+<span class="chip">Lo que ganas</span>
+<h2>Elegir por el precio de la tabla o por la <span class="amb">entrega correcta</span></h2>
+<div class="grid g2">
+<div class="card"><h3>😩 Al elegir por el precio de la tabla</h3><p>Las IA cobran por token, el fragmento de texto que leen y escriben. Abres la tabla, ves que Gemini 4 Hydrogen cobra menos por token que Argon y te quedas con él.</p><p>En el marcador de Agent Arena, Hydrogen costó <strong>US$ 1,50 por tarea</strong> y Argon <strong>US$ 0,66</strong>. Lo «barato» salió más del doble.</p></div>
+<div class="card"><h3>😌 Al elegir por el costo por entrega correcta</h3><p>Sumas todo lo que pagaste, incluidos los intentos que salieron mal, y lo divides entre las tareas que quedaron correctas.</p><p>Ese número muestra cuánto cuesta realmente la IA, porque cuenta los errores y el retrabajo.</p></div>
+</div>
+<div class="stats">
+<div class="stat"><b>&lt; la mitad</b><span>Gemini 4 Neon casi empata con Claude Opus 5.5 en el marcador (1333 frente a 1336) y cuesta US$ 2,60 por tarea, frente a US$ 5,98.</span></div>
+<div class="stat"><b>15×</b><span>En el rango de gran volumen, Hydrogen cobra 15 veces más por token que Claude Haiku 5.5 y GPT-6 Luna (en pedidos de hasta 100 mil tokens).</span></div>
+<div class="stat"><b>1 de diciembre</b><span>A partir del 1 de diciembre de 2026, el precio de Argon se duplica (de US$ 2 / 10 a US$ 4 / 20).</span></div>
+</div>
+</div></section>
+<section id="faixas"><div class="wrap">
+<span class="chip">Quién gana</span>
+<h2>Los tres rangos, <span class="amb">lado a lado</span></h2>
+<p class="sub">Cada empresa tiene un modelo para trabajo complejo, uno para el día a día y otro para gran volumen. La IA cobra por <strong>token</strong>, un fragmento de texto más pequeño que una palabra. El precio está en dólares por millón de tokens: el primer número es lo que le envías a la IA (entrada) y el segundo, lo que escribe (salida). La <strong>puntuación</strong> viene de Agent Arena, un marcador público que compara IA al realizar tareas reales: cuanto más alta, mejor, y no es un porcentaje de aciertos.</p>
+<div class="faixa">
+<h3>🏔️ Trabajo complejo</h3>
+<div class="tres">
+<div><b>Gemini 4 Neon</b><small>Google</small><span class="pz">3 / 15</span><small>Puntuación 1333 · US$ 2,60 por tarea</small></div>
+<div><b>Claude Opus 5.5</b><small>Anthropic</small><span class="pz">4 / 20</span><small>Puntuación 1336 · US$ 5,98 por tarea</small></div>
+<div><b>GPT-6.2 Astra</b><small>OpenAI</small><span class="pz">8 / 40</span><small>Puntuación 1291 · US$ 3,11 por tarea</small></div>
+</div>
+<div class="veredito"><strong>Gana: Neon.</strong> Calidad casi igual a la de Opus por menos de la mitad del costo por tarea. Astra cobra el doble que Opus por token y queda por debajo de ambos en el marcador. Si quieres la máxima calidad, <strong>Claude Fable 5.2</strong> lidera todo (1448), pero cada tarea cuesta US$ 9,16.</div>
+</div>
+<div class="faixa">
+<h3>🛠️ Día a día</h3>
+<div class="tres">
+<div><b>Gemini 4 Argon</b><small>Google</small><span class="pz">2 / 10</span><small>Puntuación 1229 · US$ 0,66 por tarea</small></div>
+<div><b>Claude Sonnet 5.5</b><small>Anthropic</small><span class="pz">2 / 10</span><small>Puntuación 1296 · US$ 3,27 por tarea</small></div>
+<div><b>GPT-6.2 Sol</b><small>OpenAI</small><span class="pz">2 / 10</span><small>Puntuación 1241 · US$ 0,96 por tarea</small></div>
+</div>
+<div class="veredito"><strong>Depende de qué sea más importante.</strong> Los tres cobran lo mismo por token. Argon es el más barato por tarea, pero su precio en la tabla se duplica el 1 de diciembre y la cuenta cambia. Sonnet tiene la mejor puntuación del rango y cuesta unos cinco Argon por tarea. Sol queda entre ambos.</div>
+</div>
+<div class="faixa">
+<h3>📦 Gran volumen</h3>
+<div class="tres">
+<div><b>Gemini 4 Hydrogen</b><small>Google</small><span class="pz">1,50 / 7,50</span><small>Puntuación 1271 (preliminar) · US$ 1,50 por tarea</small></div>
+<div><b>Claude Haiku 5.5</b><small>Anthropic</small><span class="pz">0,10 / 0,50</span><small>Sin puntuación en la versión consultada del marcador</small></div>
+<div><b>GPT-6 Luna</b><small>OpenAI</small><span class="pz">0,10 / 0,50</span><small>Sin puntuación en la versión consultada del marcador</small></div>
+</div>
+<div class="veredito"><strong>Aquí Google pierde en precio.</strong> Haiku y Luna cobran 15 veces menos por token. Como los dos no aparecen en el marcador, solo puedes descubrir su calidad para tu tarea probándolos; ahí es donde el costo por entrega correcta decide.</div>
+</div>
+<h3 style="margin-top:34px">💵 Cuánto costó cada tarea en Agent Arena</h3>
+<div class="bars">
+<div class="bar"><span class="nm">Fable 5.2</span><span class="tr"><span class="fi a" style="width:100%;display:block"></span></span><span class="v">9,16</span></div>
+<div class="bar"><span class="nm">Opus 5.5</span><span class="tr"><span class="fi a" style="width:65%;display:block"></span></span><span class="v">5,98</span></div>
+<div class="bar"><span class="nm">Sonnet 5.5</span><span class="tr"><span class="fi a" style="width:36%;display:block"></span></span><span class="v">3,27</span></div>
+<div class="bar"><span class="nm">Astra 6.2</span><span class="tr"><span class="fi o" style="width:34%;display:block"></span></span><span class="v">3,11</span></div>
+<div class="bar"><span class="nm">Neon</span><span class="tr"><span class="fi g" style="width:28%;display:block"></span></span><span class="v">2,60</span></div>
+<div class="bar"><span class="nm">Hydrogen</span><span class="tr"><span class="fi g" style="width:16%;display:block"></span></span><span class="v">1,50</span></div>
+<div class="bar"><span class="nm">Sol 6.2</span><span class="tr"><span class="fi o" style="width:10.5%;display:block"></span></span><span class="v">0,96</span></div>
+<div class="bar"><span class="nm">Argon</span><span class="tr"><span class="fi g" style="width:7%;display:block"></span></span><span class="v">0,66</span></div>
+</div>
+<div class="leg"><span><i style="background:#4f8df5"></i>Google</span><span><i style="background:#d9a06b"></i>Anthropic</span><span><i style="background:#7CE0C6"></i>OpenAI</span><span>US$ por tarea, valor típico (mediana)</span></div>
+<h3 style="margin-top:30px">🏆 Puntuación en el marcador (cuanto más alta, mejor)</h3>
+<div class="bars">
+<div class="bar"><span class="nm">Fable 5.2</span><span class="tr"><span class="fi a" style="width:100%;display:block"></span></span><span class="v">1448</span></div>
+<div class="bar"><span class="nm">Opus 5.5</span><span class="tr"><span class="fi a" style="width:55%;display:block"></span></span><span class="v">1336</span></div>
+<div class="bar"><span class="nm">Neon</span><span class="tr"><span class="fi g" style="width:54%;display:block"></span></span><span class="v">1333</span></div>
+<div class="bar"><span class="nm">Sonnet 5.5</span><span class="tr"><span class="fi a" style="width:39%;display:block"></span></span><span class="v">1296</span></div>
+<div class="bar"><span class="nm">Astra 6.2</span><span class="tr"><span class="fi o" style="width:37%;display:block"></span></span><span class="v">1291</span></div>
+<div class="bar"><span class="nm">Hydrogen*</span><span class="tr"><span class="fi g" style="width:29%;display:block"></span></span><span class="v">1271</span></div>
+<div class="bar"><span class="nm">Sol 6.2</span><span class="tr"><span class="fi o" style="width:16.5%;display:block"></span></span><span class="v">1241</span></div>
+<div class="bar"><span class="nm">Argon</span><span class="tr"><span class="fi g" style="width:12%;display:block"></span></span><span class="v">1229</span></div>
+</div>
+<p class="fonte">La escala de puntuaciones empieza en 1200 para que se note la diferencia. *Hydrogen tiene una puntuación preliminar. El «esfuerzo» es cuánto puede pensar la IA antes de responder: Google se midió en el nivel alto, Anthropic y OpenAI en el máximo. El costo es el valor típico (la mediana) de las tareas de los últimos 14 días, y las sesiones varían según el modelo. Fuente: <a href="https://arena.ai/leaderboard/agent" rel="noopener" target="_blank">Agent Arena</a>, versión consultada el 19/11/2026.</p>
+</div></section>
+<section id="comparacoes"><div class="wrap">
+<span class="chip">Todas las comparaciones</span>
+<h2>Lo que medimos en las <span class="amb">tres plataformas</span></h2>
+<p class="sub">Cuatro comparaciones entre Google, Anthropic y OpenAI, del 19 y 20/11/2026. Solo los números: los detalles de cada una están en las secciones de la guía y en el README.</p>
+<div class="tblwrap"><table class="tbl">
+<thead><tr><th>Comparación</th><th>Qué se midió</th><th>Google (Gemini 4)</th><th>Anthropic (Claude)</th><th>OpenAI (GPT)</th></tr></thead>
+<tbody>
+<tr><td><strong>1. Precio oficial</strong><br/><span class="mut">10 modelos, 3 rangos</span></td><td>US$ por millón de tokens (entrada / salida)</td><td><span class="plat">Google: </span>Neon 3 / 15 · Argon 2 / 10 · Hydrogen 1,50 / 7,50</td><td><span class="plat">Anthropic: </span>Fable 8 / 40 · Opus 4 / 20 · Sonnet 2 / 10 · Haiku 0,10 / 0,50</td><td><span class="plat">OpenAI: </span>Astra 8 / 40 · Sol 2 / 10 · Luna 0,10 / 0,50</td></tr>
+<tr><td><strong>2. Marcador de Agent Arena</strong><br/><span class="mut">8 modelos con puntuación</span></td><td>Puntuación · US$ por tarea</td><td><span class="plat">Google: </span>Neon 1333 · 2,60<br/>Hydrogen 1271 · 1,50<br/>Argon 1229 · 0,66</td><td><span class="plat">Anthropic: </span>Fable 1448 · 9,16<br/>Opus 1336 · 5,98<br/>Sonnet 1296 · 3,27</td><td><span class="plat">OpenAI: </span>Astra 1291 · 3,11<br/>Sol 1241 · 0,96</td></tr>
+<tr><td><strong>3. Kit de pruebas</strong><br/><span class="mut">tarea de los comprobantes, 10 modelos × 2, con la suscripción</span></td><td>Aciertos · centavos de US$ por entrega correcta · tiempo</td><td><span class="plat">Google: </span>los 3 acertaron<br/>1,92 a 3,62 ¢ · 12 a 16 s<br/><span class="mut">(esfuerzo alto)</span></td><td><span class="plat">Anthropic: </span>los 4 acertaron<br/>0,038 a 1,55 ¢ · 4 a 6 s</td><td><span class="plat">OpenAI: </span>los 3 acertaron<br/>0,008 a 0,66 ¢ · 7 a 11 s</td></tr>
+<tr><td><strong>4. Análisis de un documento largo</strong><br/><span class="mut">182 KB, mismo pedido, contenido interno no publicado</span></td><td>Tiempo · recuentos incorrectos · puntuación de calidad (nuestra)</td><td><span class="plat">Google: </span>Neon: 5,5 min · 3 incorrectos · 6,5</td><td><span class="plat">Anthropic: </span>Fable 5.2: 14 min · ninguno · 9</td><td><span class="plat">OpenAI: </span>Astra: 4,5 min · ninguno · 8</td></tr>
+</tbody></table></div>
+<div class="grid g3" style="margin-top:16px">
+<div class="card"><h3>🏆 Calidad</h3><p>En el análisis largo, Fable fue el más riguroso y Astra tuvo la mejor relación costo-beneficio. Neon fue el más detallado, pero se equivocó en los recuentos y sacó conclusiones que los otros dos refutaron.</p></div>
+<div class="card"><h3>💵 Costo</h3><p>En la tarea sencilla, todos acertaron y GPT-6 Luna fue el más barato. Con esfuerzo alto, los Gemini piensan más y resultaron los más caros por entrega.</p></div>
+<div class="card"><h3>⚡ Velocidad</h3><p>En la tarea sencilla, Claude Sonnet fue el más rápido (4 s). En el análisis largo, Astra (4,5 min); Fable tardó tres veces más.</p></div>
+</div>
+<h3 style="margin:34px 0 6px">🧪 La prueba de los comprobantes, modelo por modelo</h3>
+<p class="mut" style="margin:0 0 12px">Los diez acertaron las dos veces, con puntuación 10 del evaluador y aprobación del verificador. Orden: del más barato al más caro por entrega correcta.</p>
+<div class="tblwrap"><table class="tbl">
+<thead><tr><th>Modelo</th><th>Cómo se ejecutó</th><th>Correctas</th><th>Tiempo mediano</th><th>Tokens de salida</th><th>US$ por entrega correcta*</th></tr></thead>
+<tbody>
+<tr><td>GPT-6 Luna</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Codex), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>7 s</td><td><span class="plat">Tokens de salida: </span>104–115</td><td><span class="plat">US$ por entrega: </span>0,00008</td></tr>
+<tr><td>Claude Haiku 5.5</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Claude Code), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>6 s</td><td><span class="plat">Tokens de salida: </span>618–817</td><td><span class="plat">US$ por entrega: </span>0,00038</td></tr>
+<tr><td>GPT-6.2 Sol</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Codex), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>9 s</td><td><span class="plat">Tokens de salida: </span>120–121</td><td><span class="plat">US$ por entrega: </span>0,00155</td></tr>
+<tr><td>Claude Sonnet 5.5</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Claude Code), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>4 s</td><td><span class="plat">Tokens de salida: </span>266–272</td><td><span class="plat">US$ por entrega: </span>0,00316</td></tr>
+<tr><td>GPT-6.2 Astra</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Codex), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>11 s</td><td><span class="plat">Tokens de salida: </span>127–134</td><td><span class="plat">US$ por entrega: </span>0,00656</td></tr>
+<tr><td>Claude Opus 5.5</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Claude Code), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>6 s</td><td><span class="plat">Tokens de salida: </span>344–375</td><td><span class="plat">US$ por entrega: </span>0,00813</td></tr>
+<tr><td>Gemini 4 Hydrogen</td><td><span class="plat">Cómo se ejecutó: </span>API, esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>6 s</td><td><span class="plat">Tokens de salida: </span>863–1.357</td><td><span class="plat">US$ por entrega: </span>0,0087</td></tr>
+<tr><td>Claude Fable 5.2</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Claude Code), esfuerzo estándar</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>5 s</td><td><span class="plat">Tokens de salida: </span>278–404</td><td><span class="plat">US$ por entrega: </span>0,01552</td></tr>
+<tr><td>Gemini 4 Argon</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Antigravity), esfuerzo alto</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>16 s</td><td><span class="plat">Tokens de salida: </span>1.645–2.097</td><td><span class="plat">US$ por entrega: </span>0,01917</td></tr>
+<tr><td>Gemini 4 Hydrogen</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Antigravity), esfuerzo alto</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>12 s</td><td><span class="plat">Tokens de salida: </span>2.869–2.943</td><td><span class="plat">US$ por entrega: </span>0,02211</td></tr>
+<tr><td>Gemini 4 Neon</td><td><span class="plat">Cómo se ejecutó: </span>suscripción (Antigravity), esfuerzo alto</td><td><span class="plat">Correctas: </span>2/2</td><td><span class="plat">Tiempo: </span>16 s</td><td><span class="plat">Tokens de salida: </span>2.234–2.498</td><td><span class="plat">US$ por entrega: </span>0,03616</td></tr>
+</tbody></table></div>
+<p class="fonte">*Cuánto costaría si pagaras por uso. Con la suscripción no pagas por tarea, solo consumes tu cuota.</p>
+<div class="grid g2" style="margin-top:14px">
+<div class="card"><h3>Lo que muestran los números</h3><ul>
+<li>Los 10 acertaron: en una tarea sencilla, gana el más barato.</li>
+<li>Claude y GPT tardaron de 4 a 11 s; los Gemini, de 12 a 16 s.</li>
+<li>En costo, Neon (US$ 0,036) quedó por encima incluso de Fable (0,016) y muy por encima de Luna (0,0001).</li>
+<li>Hydrogen por API, con esfuerzo estándar, costó cerca de 2,5 veces menos que con la suscripción y esfuerzo alto.</li>
+</ul></div>
+<div class="card"><h3>Por qué y qué falta medir</h3><ul>
+<li>El motivo principal es el esfuerzo: en el nivel alto, Gemini piensa bastante antes de responder (de 2 a 3 mil tokens, frente a 100 a 800 de los demás). Claude y GPT se ejecutaron con esfuerzo estándar, así que la comparación de costos no está equilibrada.</li>
+<li>Aquí no se probó Neon como crítico: la prueba midió la ejecución de la tarea, no la revisión.</li>
+<li>Siguiente paso para una comparación justa: ejecutar también los Gemini con esfuerzo medio y bajo, y usar una tarea más difícil en la que algunos modelos se equivoquen.</li>
+</ul></div>
+</div>
+<h3 style="margin:34px 0 6px">🏆 Clasificación del análisis de un documento largo</h3>
+<p class="mut" style="margin:0 0 12px"><strong>Fable fue el mejor, Astra quedó cerca y Neon terminó al final.</strong> Neon es el más detallado, pero también el que más se equivocó. Los tres recibieron el mismo pedido sobre un documento interno de 182 KB (el contenido no se publica); Astra y Fable también revisaron el análisis de Neon.</p>
+<div class="tblwrap"><table class="tbl">
+<thead><tr><th></th><th>Fable 5.2 (Claude)</th><th>Astra (GPT-6.2, esfuerzo alto)</th><th>Neon (Gemini 4, esfuerzo alto)</th></tr></thead>
+<tbody>
+<tr><td><strong>Tiempo</strong></td><td><span class="plat">Fable: </span>~14 min (el más lento)</td><td><span class="plat">Astra: </span>~4,5 min (el más rápido)</td><td><span class="plat">Neon: </span>~5,5 min</td></tr>
+<tr><td><strong>Extensión de la respuesta</strong></td><td><span class="plat">Fable: </span>~15 mil caracteres, la más concisa</td><td><span class="plat">Astra: </span>~18 mil</td><td><span class="plat">Neon: </span>~25 mil, la más extensa</td></tr>
+<tr><td><strong>Números correctos</strong></td><td><span class="plat">Fable: </span>Todo lo que verificamos coincidió. Verificó 7 números de Neon y encontró 4 incorrectos</td><td><span class="plat">Astra: </span>Todo lo que verificamos coincidió. Encontró 3 errores de Neon</td><td><span class="plat">Neon: </span>Acertó la base, pero se equivocó en 3 recuentos</td></tr>
+<tr><td><strong>Método</strong></td><td><span class="plat">Fable: </span>El más riguroso: separó lo que se repite de lo nuevo y contó mediante un script</td><td><span class="plat">Astra: </span>Explicó su propio método y trató cada efecto como un límite, sin prometer más de la cuenta</td><td><span class="plat">Neon: </span>Sumó causas que se superponen sin avisar y presentó una suposición como un hecho</td></tr>
+<tr><td><strong>Hallazgos propios</strong></td><td><span class="plat">Fable: </span>Los más útiles: correcciones que crean un defecto nuevo y reglas que existen, pero no sirven de protección</td><td><span class="plat">Astra: </span>Encontró el punto exacto en que falla el proceso y una corrección aplicada en el lugar equivocado</td><td><span class="plat">Neon: </span>Buena búsqueda de detalles ocultos en los datos</td></tr>
+<tr><td><strong>Conclusión</strong></td><td><span class="plat">Fable: </span>La más sólida; señala el límite de su propia propuesta</td><td><span class="plat">Astra: </span>Sólida y equilibrada</td><td><span class="plat">Neon: </span>La más débil: los otros dos refutaron sus dos propuestas principales</td></tr>
+<tr><td><strong>Crítica a Neon</strong></td><td><span class="plat">Fable: </span>La más completa: acuerdos, desacuerdos y lo que faltó, con números</td><td><span class="plat">Astra: </span>Buena: verificó 6 afirmaciones</td><td><span class="plat">Neon: </span>—</td></tr>
+<tr><td><strong>Puntuación (nuestra)</strong></td><td><span class="plat">Fable: </span><strong>9</strong></td><td><span class="plat">Astra: </span><strong>8</strong></td><td><span class="plat">Neon: </span><strong>6,5</strong></td></tr>
+</tbody></table></div>
+<div class="grid g3" style="margin-top:14px">
+<div class="card"><h3>🥇 Fable</h3><p>El más confiable y el que mejor entendió el problema, pero tardó tres veces más.</p></div>
+<div class="card"><h3>🥈 Astra</h3><p>La mejor relación costo-beneficio: rápido, preciso y cuidadoso con lo que afirma, y tuvo una idea que ninguno de los otros tuvo.</p></div>
+<div class="card"><h3>🥉 Neon</h3><p>Excelente para recopilar y organizar mucho material rápidamente. Pero saca conclusiones demasiado contundentes y se equivoca en los recuentos: como crítico, necesita que alguien verifique sus números.</p></div>
+</div>
+<p class="fonte">La puntuación de calidad del análisis largo es nuestra evaluación: Astra y Fable verificaron los números de Neon frente al documento, y ambos llegaron a las mismas correcciones. Neon respondió primero y los otros dos leyeron su análisis, lo que favorece a quienes llegan después. Una tarea y un documento no bastan para decir qué modelo es mejor en general.</p>
+</div></section>
+<section id="dia"><div class="wrap">
+<span class="chip">En tu día a día</span>
+<h2>Cómo cambia tu <span class="amb">elección</span></h2>
+<p class="sub">Tres situaciones comunes de quienes pagan por IA para trabajar.</p>
+<div class="grid g3">
+<div class="card"><h3>💬 Responder mil mensajes al día</h3><p><strong>Hoy:</strong> eliges el modelo «rápido» del proveedor que ya usas y ni miras el precio.</p><p><strong>Con la comparación:</strong> ves que, en este rango, Haiku y Luna cobran 15 veces menos por token que Hydrogen. Prueba los tres con 20 mensajes reales antes de decidir.</p></div>
+<div class="card"><h3>📊 Un informe difícil por semana</h3><p><strong>Hoy:</strong> pagas el modelo más caro porque «el mejor debe acertar».</p><p><strong>Con la comparación:</strong> sabes que Neon se acerca a Opus por menos de la mitad del costo por tarea y reservas Fable para lo que solo él resuelve.</p></div>
+<div class="card"><h3>⚙️ Automatizaciones del día a día</h3><p><strong>Hoy:</strong> los tres cobran lo mismo por token, así que cualquiera sirve.</p><p><strong>Con la comparación:</strong> por tarea, Argon costó una quinta parte de Sonnet. Pero su precio se duplica el 1 de diciembre: ya sabes que tendrás que volver a hacer la cuenta en diciembre.</p></div>
+</div>
+</div></section>
+<!-- VIDEO: entra el explicavideo del proyecto cuando se publique -->
+<section id="pratica"><div class="wrap">
+<span class="chip">En la práctica</span>
+<h2>"Cómo elige Nei" <span class="amb">el día a día</span></h2>
+<p class="sub">Los números dicen cuánto cuesta. La experiencia de uso dice si vale la pena. Estas son las elecciones de Nei para el día a día.</p>
+<div class="grid g3">
+<div class="card"><h3>🪶 Luna y Haiku: económicos para tareas sencillas y largas</h3><p>GPT-6 Luna y Claude Haiku 5.5 cuestan centavos y acertaron la tarea sencilla de nuestra prueba. Son buenas opciones para tareas sencillas y largas: muchos pasos repetidos, gran volumen y trabajo que no requiere un razonamiento profundo.</p></div>
+<div class="card"><h3>⭐ Terra y Sonnet: los preferidos de Nei</h3><p>En las pruebas de Nei, sus favoritos son GPT-6.1 Terra y Claude Sonnet 5.5: cuestan más que Luna y Haiku, pero entregan buenos resultados con más constancia. En OpenAI, el orden de menor a mayor es Luna, Terra, Sol y Astra. Terra no aparece en las tablas anteriores.</p></div>
+<div class="card"><h3>🔍 Neon como crítico</h3><p>Hoy Nei usa Claude y Codex para que se revisen mutuamente: los modelos de empresas distintas se equivocan en puntos distintos. Gemini 4 Neon puede ser esa segunda mirada, la IA que valida y critica, para quienes solo tienen Claude o solo tienen Codex. <a href="#gemini-pro">Mira cómo activar Gemini Pro</a>.</p></div>
+</div>
+</div></section>
+<section id="gemini-pro"><div class="wrap">
+<span class="chip">Gemini Pro en Claude y Codex</span>
+<h2>Usa tu suscripción a Gemini <span class="amb">dentro de Claude Code o Codex</span></h2>
+<p class="sub">¿Pagas Google AI Pro y quieres que Gemini trabaje junto con Claude o Codex, por ejemplo como IA que revisa y critica? Se puede, pero el proceso cambió en 2026.</p>
+<div class="grid g2">
+<div class="card"><h3>⚠️ Qué cambió: "Gemini CLI fue retirado"</h3><p>Gemini CLI era la forma de usar la suscripción a Gemini en la terminal. El 18 de junio de 2026, Google dejó de aceptar en esa herramienta las cuentas de quienes tienen Pro o Ultra. Quienes intentan iniciar sesión hoy reciben el mensaje: «This client is no longer supported for Gemini Code Assist for individuals».</p><p>El reemplazo es <strong>Antigravity CLI</strong>, el programa de terminal de Antigravity, del propio Google. Usa la cuota de tu suscripción.</p></div>
+<div class="card"><h3>🔑 Por qué la clave de API no lo resuelve</h3><p>La suscripción a Gemini no sirve para las claves de API de Google AI Studio. La clave tiene su propia cuota: con el plan gratuito, Hydrogen responde, pero Neon y Argon indican «cuota agotada». Para usarlos, necesitas una clave vinculada a una tarjeta y pagar por uso.</p></div>
+</div>
+<div class="prova" style="margin-top:18px">
+<ol class="tl">
+<li><b>Probamos las claves de API que ya teníamos.</b><br/><span class="mut">Todas eran del plan gratuito: Hydrogen funcionó; Neon y Argon indicaron «cuota agotada».</span></li>
+<li><b>Probamos Gemini CLI con la cuenta de la suscripción.</b><br/><span class="mut">El inicio de sesión funcionó, pero Google rechazó el uso y pidió migrar a Antigravity.</span></li>
+<li><b>Instalamos Antigravity CLI e iniciamos sesión con la cuenta de Google.</b><br/><span class="mut">Muestra un enlace; inicias sesión con la cuenta que tiene la suscripción a Gemini, copias el código que aparece y lo pegas de vuelta. En la lista aparecieron Gemini 4 Neon, Argon y Hydrogen, con varios niveles de esfuerzo, y también Claude Opus y Sonnet.</span></li>
+<li><b>Gemini empezó a ejecutarse con la suscripción, llamado desde Claude Code.</b><br/><span class="mut">El kit de pruebas ejecutó así los tres Gemini y los tres acertaron la tarea de los comprobantes.</span></li>
+</ol>
+</div>
+<h3 style="margin:26px 0 8px">Pídele a tu IA que deje Gemini listo</h3>
+<p class="mut" style="margin:0 0 10px">Pégalo en Claude Code o Codex. Instala Antigravity CLI, te pasa el enlace para iniciar sesión y acuerda contigo cuándo llamar a Gemini, por ejemplo para tener una segunda opinión antes de entregar un trabajo.</p>
+<div class="pedido" style="position:relative">
+<pre id="pedidoGemini" style="white-space:pre-wrap">Quiero usar mi suscripción a Gemini (Google AI Pro) aquí, contigo.
+Gemini CLI ya no acepta la suscripción individual; ahora el proceso es usar Antigravity CLI (agy).
+Sigue el README de https://github.com/inematds/qual-ia-usar (sección «Gemini Pro dentro de Claude Code o Codex»):
+1. Instala Antigravity CLI y pásame el enlace para iniciar sesión. Entro con mi cuenta de Google y te devuelvo el código.
+2. Enumera los modelos que habilita mi cuenta.
+3. Muéstrame cómo llamarás a Gemini 4 Neon para que critique lo que hagas, y espera a que te dé el sí antes de usarlo.</pre>
+<button class="btn" id="copiarGemini" style="margin-top:10px">Copiar el pedido</button>
+</div>
+<p class="fonte">La cuota de Pro no tiene una cantidad publicada: se renueva cada 5 horas, con un límite semanal. Hay casos de cuentas Pro que reciben «not eligible» en Antigravity. Antigravity es un agente: con esfuerzo alto piensa más, lo que hace que la respuesta sea más cuidadosa y extensa.</p>
+</div></section>
+<section id="como"><div class="wrap">
+<span class="chip">Cómo funciona</span>
+<h2>Costo por entrega correcta, <span class="amb">sin jerga</span></h2>
+<p class="sub">Piensa en un albañil que cobra poco por día, pero vuelve a hacer la pared tres veces. El día era barato; la pared, no. Con la IA pasa lo mismo: importa cuánto pagaste hasta que la tarea quedó correcta.</p>
+<div class="flow"><span>Todo lo que pagaste</span><span class="arr">÷</span><span>Tareas que quedaron correctas</span><span class="arr">=</span><span>Costo por entrega correcta</span></div>
+<div class="card" style="margin-top:22px"><h3>🧮 Haz la cuenta</h3><p>Cuánto cuesta un intento y cuántos salieron bien. El costo puede ser en dólares (si pagas por uso) o en minutos de tu tiempo (si pagas una suscripción). Cambia los valores y mira cómo la «barata» se vuelve cara.</p>
+<div class="calc">
+<div><strong>IA A</strong>
+<label>Costo de cada intento (dólares o minutos)<input id="ca" min="0" step="0.01" type="number" value="0.10"/></label>
+<label>Intentos<input id="na" min="0" step="1" type="number" value="10"/></label>
+<label>Cuántos quedaron correctos<input id="pa" min="0" step="1" type="number" value="3"/></label>
+<div class="res" id="ra">—</div><span class="mut">por entrega correcta, en la misma unidad</span>
+</div>
+<div><strong>IA B</strong>
+<label>Costo de cada intento (dólares o minutos)<input id="cb" min="0" step="0.01" type="number" value="0.25"/></label>
+<label>Intentos<input id="nb" min="0" step="1" type="number" value="10"/></label>
+<label>Cuántos quedaron correctos<input id="pb" min="0" step="1" type="number" value="9"/></label>
+<div class="res" id="rb">—</div><span class="mut">por entrega correcta, en la misma unidad</span>
+</div>
+</div>
+<p class="calcfim" id="rfim"></p>
+<p class="fonte">Valores de ejemplo, no medidos. La cuenta es: costo de cada intento × intentos ÷ cantidad de respuestas correctas. Si la IA acierta 3 de 10, cada entrega correcta cuesta, en promedio, 3,3 intentos.</p>
+</div>
+<div class="card" style="margin-top:16px"><h3>⚠️ Qué no promete esta comparación</h3><ul>
+<li>Los precios y el marcador cambian. Todo lo de aquí se verificó el 19/11/2026.</li>
+<li>El marcador mide tareas de agentes en general, no tu tarea. Te indica por dónde empezar la prueba.</li>
+<li>Haiku y Luna no tienen puntuación en la versión consultada del marcador, y la de Hydrogen aún es preliminar.</li>
+<li>Los números de los rangos son los publicados por las empresas y Agent Arena. Nuestra prueba (abajo, en «La prueba») abarca una tarea y siete modelos.</li>
+</ul></div>
+</div></section>
+<section id="comecar"><div class="wrap">
+<span class="chip">Cómo empezar</span>
+<h2>Descubre qué IA sale más barata <span class="amb">para tu tarea</span></h2>
+<p class="sub">El marcador es un buen comienzo, pero la respuesta correcta depende de tu tarea. Hay dos caminos: uno manual, solo con las apps a las que ya estás suscrito, y otro en el que tu IA prepara la prueba.</p>
+<div class="card" style="margin-bottom:22px"><h3>✋ Camino 1: manualmente, con las suscripciones que ya tienes</h3><p>No necesitas instalar nada ni crear una cuenta nueva. ¿No tienes suscripción a las tres? Tienen una versión gratuita con límites que sirve para la prueba.</p><ol style="margin:10px 0 0;padding-left:22px;color:var(--mut)"><li>Elige una tarea real de tu trabajo y define de antemano qué significa que «quedó correcta».</li><li>Pide la misma tarea 3 veces en cada app, con suscripción o gratis (ChatGPT, Claude, Gemini), siempre en una conversación nueva.</li><li>Anota cuántas veces, de 3, quedó correcta sin que tuvieras que corregirla.</li><li>En la calculadora de arriba, pon en «costo de cada intento» los minutos que dedicas a cada uno (pedirlo, leerlo y revisarlo), y los intentos y aciertos que anotaste. La que dé el resultado más bajo es la que consume menos de tu tiempo y de tu cuota.</li></ol></div>
+<h3 style="margin:0 0 6px">🤖 Camino 2: el kit de pruebas ejecuta tu tarea en todas las IA que actives</h3>
+<p class="mut" style="margin:0 0 14px">Describes la tarea y qué significa que «quedó correcta». El kit envía la misma tarea varias veces a cada IA, un evaluador revisa cada respuesta y genera un informe: cuántas quedaron correctas, cuánto tardó y cuánto costó cada entrega correcta. Tu IA prepara y ejecuta el kit.</p>
+<div class="grid g3">
+<div class="card"><h3>1. Abre tu IA</h3><p>Claude Code (incluido con la suscripción a Claude) o Codex (incluido con ChatGPT): son versiones de estas IA que trabajan con los archivos de tu computadora. ¿Nunca los usaste? Sigue el camino 1.</p></div>
+<div class="card"><h3>2. Pega el pedido de abajo</h3><p>Indica a la IA que lea el kit, prepare tu tarea en el formato correspondiente y te muestre el plan, sin ejecutar nada todavía.</p></div>
+<div class="card"><h3>3. Di que sí a la prueba</h3><p>Claude y GPT se ejecutan con las suscripciones de Claude Code y Codex. Gemini se ejecuta con la suscripción a Google AI Pro, mediante Antigravity CLI (mira <a href="#gemini-pro">cómo activarlo</a>). Fuera de las suscripciones, necesitas una cuenta de pago por uso (la API) con tarjeta. Apruebas qué modelos incluir y la IA te entrega el informe.</p></div>
+</div>
+<div class="pedido" style="margin-top:20px;position:relative">
+<pre id="pedidoTxt" style="white-space:pre-wrap">Lee el proyecto «Qué IA usar» (qual-ia-usar) en https://github.com/inematds/qual-ia-usar (el README explica el kit de pruebas en kit/testar.py).
+Quiero saber qué IA ofrece el menor costo por entrega correcta para una tarea mía: [describe la tarea y qué significa que «quedó correcta»].
+1. Dime, en español sencillo, qué 3 o 4 modelos conviene probar para esta tarea y por qué.
+2. Propón una prueba pequeña: cuántas veces ejecutar cada modelo y cuánto debería costar.
+3. No llames a ningún modelo ni gastes nada antes de que te dé el sí.
+Después de que te dé el sí, prepara la tarea en el formato del kit, ejecuta la prueba y muéstrame el informe.</pre>
+<button class="btn" id="copiarPedido" style="margin-top:10px">Copiar el pedido</button>
+</div>
+<p class="mut" style="margin-top:16px">El pedido indica a la IA que muestre el costo y espere tu autorización antes de gastar nada.</p>
+<div class="card" style="margin-top:16px"><h3>🛠️ ¿Es técnico y prefieres hacerlo manualmente?</h3><p>La calculadora, las tablas en hojas de cálculo y el paso a paso están en el README, la página de instrucciones del proyecto en GitHub.</p><p><a class="btn ghost" href="https://github.com/inematds/qual-ia-usar/blob/main/README.es.md#instalación-técnica" rel="noopener" target="_blank">Ver la parte técnica</a></p></div>
+</div></section>
+<section id="base"><div class="wrap">
+<span class="chip">De dónde viene</span>
+<h2>Solo datos <span class="amb">publicados</span>, con enlaces</h2>
+<p class="sub">Ninguna cifra de aquí es una estimación nuestra. Todo se verificó en las páginas siguientes el 19/11/2026.</p>
+<div class="grid g2">
+<div class="card"><h3>🔵 Google</h3><p>Tabla oficial de precios de Gemini y anuncios de Neon, Argon y Hydrogen. Argon pasa a costar US$ 4 / 20 el 1/12/2026, y Hydrogen tiene un plan gratuito con límites.</p><p><a href="https://aistudio.google.com/docs/pricing" rel="noopener" target="_blank">Precios de Google</a></p></div>
+<div class="card"><h3>🟠 Anthropic</h3><p>Tabla oficial de Claude. Haiku 5.5 sube a US$ 0,50 / 2,50 cuando envías más de 100 mil tokens de una vez.</p><p><a href="https://platform.claude.com/docs/en/about-claude/pricing" rel="noopener" target="_blank">Precios de Anthropic</a></p></div>
+<div class="card"><h3>🟢 OpenAI</h3><p>Tabla oficial y anuncio de GPT-6.2 (Astra y Sol). El modelo económico comparado es GPT-6 Luna.</p><p><a href="https://developers.openai.com/api/docs/pricing" rel="noopener" target="_blank">Precios de OpenAI</a></p></div>
+<div class="card"><h3>🏁 Agent Arena</h3><p>Marcador público donde agentes de IA realizan tareas reales y se comparan. De ahí vienen la puntuación y el costo mediano por tarea. La puntuación no es un porcentaje de aciertos.</p><p><a href="https://arena.ai/leaderboard/agent" rel="noopener" target="_blank">Agent Arena</a></p></div>
+</div>
+</div></section>
+<section id="prova"><div class="wrap">
+<span class="chip">La prueba</span>
+<h2>La cuenta cambia <span class="amb">la respuesta</span></h2>
+<p class="sub">Dentro del propio Google, el marcador ya muestra el efecto: el modelo más barato por token no fue el más barato por tarea.</p>
+<div class="prova">
+<ol class="tl">
+<li><b>Por token, Hydrogen es el más barato de Google.</b><br/><span class="mut">US$ 1,50 / 7,50, frente a US$ 2 / 10 de Argon.</span></li>
+<li><b>Por tarea, Argon costó menos de la mitad.</b><br/><span class="mut">US$ 0,66, frente a US$ 1,50 de Hydrogen, en el mismo marcador y período.</span></li>
+<li><b>La diferencia depende de cómo trabaja cada uno.</b><br/><span class="mut">Cuántos tokens consume, cuántas vueltas da y cuánto tiene que rehacer hasta terminar. Eso es lo que refleja el costo por entrega correcta.</span></li>
+</ol>
+<p class="rod">Los datos están en el proyecto, en una hoja de cálculo, con las fuentes: <a href="https://github.com/inematds/qual-ia-usar/tree/main/dados" rel="noopener" target="_blank">carpeta de datos (en portugués)</a>.</p>
+</div>
+<h3 style="margin:30px 0 6px">🧪 También ejecutamos el kit con una tarea real</h3>
+<p class="mut" style="margin:0 0 14px">Tarea: convertir cinco comprobantes en una hoja de cálculo, encontrar el duplicado y el que no tenía valor, y sumar el total. Diez modelos, dos veces cada uno, el 19/11/2026, todos con la suscripción: Claude con Claude Code, GPT con Codex y Gemini con Google AI Pro. Los diez acertaron las dos veces. Cuando todos aciertan, gana el más barato.</p>
+<div class="bars">
+<div class="bar"><span class="nm">Neon</span><span class="tr"><span class="fi g" style="width:100%;display:block"></span></span><span class="v">3,62</span></div>
+<div class="bar"><span class="nm">Hydrogen</span><span class="tr"><span class="fi g" style="width:61.1%;display:block"></span></span><span class="v">2,21</span></div>
+<div class="bar"><span class="nm">Argon</span><span class="tr"><span class="fi g" style="width:53%;display:block"></span></span><span class="v">1,92</span></div>
+<div class="bar"><span class="nm">Fable 5.2</span><span class="tr"><span class="fi a" style="width:42.9%;display:block"></span></span><span class="v">1,55</span></div>
+<div class="bar"><span class="nm">Opus 5.5</span><span class="tr"><span class="fi a" style="width:22.5%;display:block"></span></span><span class="v">0,81</span></div>
+<div class="bar"><span class="nm">Astra 6.2</span><span class="tr"><span class="fi o" style="width:18.1%;display:block"></span></span><span class="v">0,66</span></div>
+<div class="bar"><span class="nm">Sonnet 5.5</span><span class="tr"><span class="fi a" style="width:8.7%;display:block"></span></span><span class="v">0,32</span></div>
+<div class="bar"><span class="nm">Sol 6.2</span><span class="tr"><span class="fi o" style="width:4.3%;display:block"></span></span><span class="v">0,15</span></div>
+<div class="bar"><span class="nm">Haiku 5.5</span><span class="tr"><span class="fi a" style="width:1.1%;display:block"></span></span><span class="v">0,038</span></div>
+<div class="bar"><span class="nm">Luna</span><span class="tr"><span class="fi o" style="width:0.6%;display:block"></span></span><span class="v">0,008</span></div>
+</div>
+<div class="leg"><span><i style="background:#4f8df5"></i>Google</span><span><i style="background:#d9a06b"></i>Anthropic</span><span><i style="background:#7CE0C6"></i>OpenAI</span><span>centavos de dólar por entrega correcta, si se pagara por uso</span></div>
+<p class="fonte">En esta tarea sencilla, los tres Gemini fueron los más caros por entrega correcta: se ejecutaron con esfuerzo alto, igual que en el marcador, y con ese nivel piensan bastante antes de responder. Claude y GPT se ejecutaron con el esfuerzo estándar de cada asistente. Por API y con esfuerzo estándar, Hydrogen costó US$ 0,0087 por entrega, cerca de 2,5 veces menos que con esfuerzo alto. Con la suscripción no pagas por tarea: el valor muestra cuánto costaría pagar por uso. <a href="https://github.com/inematds/qual-ia-usar/blob/main/resultados/2026-11-19-2317-comprovantes/relatorio.md" rel="noopener" target="_blank">Informe completo (en portugués)</a>.</p>
+</div></section>
+<section id="faq"><div class="wrap">
+<span class="chip">Preguntas frecuentes</span>
+<h2>Antes de <span class="amb">elegir</span></h2>
+<div class="grid g2">
+<div class="card"><h3>¿Necesito saber programar?</h3><p>No. Para leer la comparación, no necesitas nada. Para probar, sigue el camino 1, solo con las apps. El camino 2 requiere Claude Code o Codex y, fuera de la suscripción, una cuenta con tarjeta en cada empresa.</p></div>
+<div class="card"><h3>Pago una suscripción mensual, no por uso. ¿Me sirve?</h3><p>Los precios por token sirven para quienes pagan por uso directamente a la empresa (la API). Para quienes tienen una suscripción, sirven como guía para elegir qué modelo usar en cada tipo de tarea. Con la suscripción no pagas por token, pero el modelo que se equivoca menos también consume menos de tu cuota.</p></div>
+<div class="card"><h3>Entonces, ¿cuál es la mejor IA?</h3><p>En calidad pura, Claude Fable 5.2 lidera el marcador. En costo por tarea, Argon, entre los modelos con puntuación en el marcador y hasta que su precio se duplique el 1 de diciembre. Para tu tarea, la respuesta sale de tu prueba.</p></div>
+<div class="card"><h3>Ya tengo ChatGPT. ¿Me conviene suscribirme a Claude o Gemini?</h3><p>Depende de tu tarea. Sigue el camino 1 con las versiones gratuitas: la que más acierte en tu tarea es la que merece la suscripción.</p></div>
+<div class="card"><h3>¿Cuánto cuesta?</h3><p>El proyecto y esta guía son gratis. La prueba con los modelos cuesta lo que cobran las empresas, y el pedido indica a la IA que muestre el precio antes.</p></div>
+</div>
+<p class="fonte" style="margin-top:22px">Y tú, ¿qué IA usas hoy porque parecía barata en la tabla? Gratis en inema.club, directamente en internet.</p>
+</div></section>
+</main>
+<footer>
+<div class="wrap">
+<div class="pill">Gemini 4</div><div class="pill">Claude</div><div class="pill">OpenAI</div>
+<p style="margin-top:18px">Qué IA usar · gratis en inema.club, directamente en internet ·
+      <a href="https://github.com/inematds/qual-ia-usar">inematds/qual-ia-usar</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+  (function(){
+    var KEY='qual-ia-usar-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarPedido'), tx=document.getElementById('pedidoTxt');
+    if(!bt||!tx) return;
+    var orig=bt.textContent;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='✓'; setTimeout(function(){bt.textContent=orig;},2000); }); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarGemini'), tx=document.getElementById('pedidoGemini');
+    if(!bt||!tx) return;
+    var orig=bt.textContent;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='✓'; setTimeout(function(){bt.textContent=orig;},2000); }); }catch(e){}
+    });
+  })();
+  (function(){
+    var T={a:'IA A',b:'IA B',mais:'sale más barata por entrega correcta',igual:'Las dos cuestan lo mismo por entrega correcta.',nunca:'nunca acierta',nenhuma:'Ninguna de las dos acierta.'};
+    function v(id){var x=parseFloat(String(document.getElementById(id).value).replace(',','.'));return isNaN(x)?0:x;}
+    function f(x){return x.toFixed(2).replace('.',',');}
+    function calc(){
+      var ka=Math.min(v('pa'),v('na')), kb=Math.min(v('pb'),v('nb'));
+      var ea=ka>0?v('ca')*v('na')/ka:Infinity, eb=kb>0?v('cb')*v('nb')/kb:Infinity;
+      document.getElementById('ra').textContent=isFinite(ea)?f(ea):T.nunca;
+      document.getElementById('rb').textContent=isFinite(eb)?f(eb):T.nunca;
+      var fim=document.getElementById('rfim');
+      if(!isFinite(ea)&&!isFinite(eb)){fim.textContent=T.nenhuma;}
+      else if(ea===eb){fim.textContent=T.igual;}
+      else{var w=ea<eb?T.a:T.b;fim.innerHTML='<strong>'+w+'</strong> '+T.mais+'.';}
+    }
+    ['ca','na','pa','cb','nb','pb'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+    calc();
+  })();
+</script>
+</body>
+</html>
