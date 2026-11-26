@@ -2,7 +2,7 @@
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
-[![Which AI costs less](guia/assets/banner-en.jpg)](https://inematds.github.io/qual-ia-usar/guia/en/)
+[![Which AI costs less](guia/assets/banner-en.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/en/)
 
 ## What it is
 
@@ -10,7 +10,7 @@ This project compares ten AI models from three companies: Google's Gemini 4 (Neo
 
 ## 📖 Guide
 
-Complete guide, in plain language: **https://inematds.github.io/qual-ia-usar/guia/en/**
+Complete guide, in plain language: **https://linnoff88-dev.github.io/arckhe-/guia/en/**
 
 ## The idea in one line
 
@@ -101,7 +101,7 @@ All ten got it right both times, with a score of 10 from the evaluator and appro
 Open Claude Code or Codex in one of your folders and paste:
 
 ```text
-Read the "Which AI to use" project at https://github.com/inematds/qual-ia-usar (the README explains the testing kit in kit/testar.py).
+Read the "Which AI to use" project at https://github.com/linnoff88-dev/qual-ia-usar (the README explains the testing kit in kit/testar.py).
 I want to know which AI has the lowest cost per successful task for one of my tasks: [describe the task and what "done correctly" means].
 1. In plain English, tell me which 3 or 4 models are worth testing for this task and why.
 2. Propose a small test: how many times to run each model and how much it should cost.
@@ -176,7 +176,7 @@ In the kit, `kit/motores.json` already points the three Gemini models to the `ag
 Only Python 3 is required (no extra libraries).
 
 ```bash
-git clone https://github.com/inematds/qual-ia-usar
+git clone https://github.com/linnoff88-dev/qual-ia-usar
 cd qual-ia-usar
 python3 calcular.py --precos                              # token price table
 python3 calcular.py --arena                               # Agent Arena leaderboard + points per dollar
@@ -251,7 +251,7 @@ Missing cost never becomes zero: the model appears as "no cost" and is excluded 
 
 `cost per successful task = sum of the cost of all attempts ÷ number of approved runs`
 
-To test with ready-made tasks and fictional data, use the Gemini 4 lab protocol: [protocolo.md (in Portuguese)](https://github.com/inematds/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md).
+To test with ready-made tasks and fictional data, use the Gemini 4 lab protocol: [protocolo.md (in Portuguese)](https://github.com/linnoff88-dev/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md).
 
 ## Sources
 
@@ -271,7 +271,7 @@ To test with ready-made tasks and fictional data, use the Gemini 4 lab protocol:
 | 5 | Independent guide review | `revisor-nota.py registra --fluxo guia` | 🤖 new reviewer |
 | 6 | Publish: commit + push (GitHub Pages via Actions) | `git push` | 🧠 |
 | 7 | Portal, search, and PRO catalog | `atualiza-portal` skill | 🧠 |
-| 8 | Topic on INEMA.LLMS | `postar-telegram` skill | 🧠 |
+| 8 | Topic on ARCKHÉ.LLMS | `postar-telegram` skill | 🧠 |
 | 9 | Comparison video on lives4 and embed in the guide (3 languages) | `yt-pub-x3` | ⚙️ x3 + 🧠 |
 
-Free on inema.club, available directly on the internet. MIT License.
+Free on ARCKHÉ AI, available directly on the internet. MIT License.

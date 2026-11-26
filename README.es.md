@@ -2,7 +2,7 @@
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
-[![Qué IA sale más barata](guia/assets/banner-es.jpg)](https://inematds.github.io/qual-ia-usar/guia/es/)
+[![Qué IA sale más barata](guia/assets/banner-es.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/es/)
 
 ## Qué es
 
@@ -10,7 +10,7 @@ Este proyecto compara diez modelos de IA de tres empresas: Gemini 4 de Google (N
 
 ## 📖 Guía
 
-Guía completa, en lenguaje sencillo: **https://inematds.github.io/qual-ia-usar/guia/es/**
+Guía completa, en lenguaje sencillo: **https://linnoff88-dev.github.io/arckhe-/guia/es/**
 
 ## La idea en una línea
 
@@ -101,7 +101,7 @@ Los diez acertaron las dos veces, con puntuación 10 del evaluador y aprobación
 Abre Claude Code o Codex en una carpeta tuya y pega:
 
 ```text
-Lee el proyecto "Qual IA usar" en https://github.com/inematds/qual-ia-usar (el README explica el kit de pruebas en kit/testar.py).
+Lee el proyecto "Qual IA usar" en https://github.com/linnoff88-dev/qual-ia-usar (el README explica el kit de pruebas en kit/testar.py).
 Quiero saber qué IA me sale más barata por entrega correcta en una tarea mía: [describe la tarea y cómo se define que "quedó bien"].
 1. Dime, en portugués sencillo, qué 3 o 4 modelos vale la pena probar para esa tarea y por qué.
 2. Propón una prueba pequeña: cuántas veces ejecutar cada modelo y cuánto debería costar.
@@ -176,7 +176,7 @@ En el kit, `kit/motores.json` ya dirige los tres Gemini a la opción `agy` (`gem
 Solo necesitas Python 3 (ninguna biblioteca adicional).
 
 ```bash
-git clone https://github.com/inematds/qual-ia-usar
+git clone https://github.com/linnoff88-dev/qual-ia-usar
 cd qual-ia-usar
 python3 calcular.py --precos                              # tabla de precios por token
 python3 calcular.py --arena                               # marcador de Agent Arena + puntos por dólar
@@ -251,7 +251,7 @@ Si falta el costo, nunca se convierte en cero: el modelo aparece «sin costo» y
 
 `custo por entrega certa = soma do custo de todas as tentativas ÷ número de execuções aprovadas`
 
-Para probar con tareas listas y datos ficticios, usa el protocolo del laboratorio de Gemini 4: [protocolo.md](https://github.com/inematds/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md) (en portugués).
+Para probar con tareas listas y datos ficticios, usa el protocolo del laboratorio de Gemini 4: [protocolo.md](https://github.com/linnoff88-dev/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md) (en portugués).
 
 ## Fuentes
 
@@ -271,7 +271,7 @@ Para probar con tareas listas y datos ficticios, usa el protocolo del laboratori
 | 5 | Revisión independiente de la guía | `revisor-nota.py registra --fluxo guia` | 🤖 revisor nuevo |
 | 6 | Publicar: commit + push (GitHub Pages mediante Actions) | `git push` | 🧠 |
 | 7 | Portal, buscador y catálogo PRO | skill `atualiza-portal` | 🧠 |
-| 8 | Tema en INEMA.LLMS | skill `postar-telegram` | 🧠 |
+| 8 | Tema en ARCKHÉ.LLMS | skill `postar-telegram` | 🧠 |
 | 9 | Video de la comparación en lives4 e inserción en la guía (3 idiomas) | `yt-pub-x3` | ⚙️ x3 + 🧠 |
 
-Gratis en inema.club, directamente en internet. Licencia MIT.
+Gratis en ARCKHÉ AI, directamente en internet. Licencia MIT.

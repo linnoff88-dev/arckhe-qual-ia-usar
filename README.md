@@ -8,7 +8,7 @@
 
 **ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
-[![Qual IA sai mais barata](guia/assets/banner.jpg)](https://inematds.github.io/qual-ia-usar/guia/)
+[![Qual IA sai mais barata](guia/assets/banner.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/)
 
 ## O que êÂ©
 
@@ -16,7 +16,7 @@ Este projeto compara dez modelos de IA de trêÂªs empresas: o Gemini 4 do Go
 
 ## ê°Å¸ââ Guia
 
-Guia completo, em linguagem simples: **https://inematds.github.io/qual-ia-usar/guia/**
+Guia completo, em linguagem simples: **https://linnoff88-dev.github.io/arckhe-/guia/**
 
 ## A ideia em uma linha
 
@@ -107,7 +107,7 @@ Os dez acertaram as duas vezes, com nota 10 do avaliador e aprovaêÂ§êÂ�
 Abra o Claude Code ou o Codex numa pasta sua e cole:
 
 ```text
-Leia o projeto "Qual IA usar" em https://github.com/inematds/qual-ia-usar (o README explica o kit de testes em kit/testar.py).
+Leia o projeto "Qual IA usar" em https://github.com/linnoff88-dev/qual-ia-usar (o README explica o kit de testes em kit/testar.py).
 Eu quero saber qual IA sai mais barata por entrega certa numa tarefa minha: [descreva a tarefa e como êÂ© "ficou certo"].
 1. Me diga, em portuguêÂªs simples, quais 3 ou 4 modelos valem testar para essa tarefa e por quêÂª.
 2. Proponha um teste pequeno: quantas vezes rodar cada modelo e quanto isso deve custar.
@@ -182,7 +182,7 @@ No kit, `kit/motores.json` jêÂ¡ aponta os trêÂªs Gemini para a via `ag
 SêÂ³ precisa do Python 3 (nenhuma biblioteca extra).
 
 ```bash
-git clone https://github.com/inematds/qual-ia-usar
+git clone https://github.com/linnoff88-dev/qual-ia-usar
 cd qual-ia-usar
 python3 calcular.py --precos                              # tabela de preêÂ§os por token
 python3 calcular.py --arena                               # placar do Agent Arena + pontos por dêÂ³lar
@@ -257,7 +257,7 @@ Custo ausente nunca vira zero: o modelo aparece como "sem custo" e fica fora da 
 
 `custo por entrega certa = soma do custo de todas as tentativas êÂ· nêÂºmero de execuêÂ§êÂµes aprovadas`
 
-Para testar com tarefas prontas e dados fictêÂ­cios, use o protocolo do laboratêÂ³rio do Gemini 4: [protocolo.md](https://github.com/inematds/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md).
+Para testar com tarefas prontas e dados fictêÂ­cios, use o protocolo do laboratêÂ³rio do Gemini 4: [protocolo.md](https://github.com/linnoff88-dev/gemini-4-na-pratica/blob/main/laboratorio/protocolo.md).
 
 ## Fontes
 
@@ -277,10 +277,10 @@ Para testar com tarefas prontas e dados fictêÂ­cios, use o protocolo do lab
 | 5 | RevisêÂ£o independente do guia | `revisor-nota.py registra --fluxo guia` | ê°Å¸Â¤â revisor novo |
 | 6 | Publicar: commit + push (GitHub Pages via Actions) | `git push` | ê°Å¸Â§Â  |
 | 7 | Portal, busca e catêÂ¡logo PRO | skill `atualiza-portal` | ê°Å¸Â§Â  |
-| 8 | TêÂ³pico no INEMA.LLMS | skill `postar-telegram` | ê°Å¸Â§Â  |
+| 8 | TêÂ³pico no ARCKHÉ.LLMS | skill `postar-telegram` | ê°Å¸Â§Â  |
 | 9 | VêÂ­deo do comparativo no lives4 e embed no guia (3 idiomas) | `yt-pub-x3` | ê¢Å¡â¢ê¯Â¸Â x3 + ê°Å¸Â§Â  |
 
-GrêÂ¡tis no inema.club, direto na internet. LicenêÂ§a MIT.
+GrêÂ¡tis no ARCKHÉ AI, direto na internet. LicenêÂ§a MIT.
 
 ---
 
