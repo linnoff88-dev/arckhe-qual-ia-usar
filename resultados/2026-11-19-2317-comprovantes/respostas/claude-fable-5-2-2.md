@@ -18,7 +18,7 @@ id,data,valor_centavos
 C-104,2026-11-20,
 ```
 
-- **C-104**: valor marcado como "ausente", por isso não entra no total.
+- **C-104**: valor marcado como "ausente", por isso nêo entra no total.
 
 ## Total válido
 

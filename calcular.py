@@ -10,9 +10,9 @@ CSV de tentativas: uma linha por tentativa, com as colunas
   modelo, execucao, tokens_entrada, tokens_saida, custo_usd, aprovada
 - modelo: igual ao nome em dados/precos-2026-11-19.csv (ex.: "Gemini 4 Argon").
 - execucao: um rótulo para cada vez que você deu a tarefa do zero (ex.: 1, 2, 3).
-  Várias tentativas da mesma execução (correções) somam custo e contam UMA entrega.
+  Várias tentativas da mesma execuçêo (correções) somam custo e contam UMA entrega.
 - custo_usd: se o painel mostrar o valor cobrado, use ele. Vazio = calcula pelos tokens.
-- aprovada: sim/não. A execução conta como entrega se alguma tentativa dela foi aprovada.
+- aprovada: sim/nêo. A execuçêo conta como entrega se alguma tentativa dela foi aprovada.
 """
 import csv
 import sys
@@ -57,7 +57,7 @@ def calcular(caminho):
     execs = defaultdict(dict)  # modelo -> execucao -> aprovada?
     for l in ler(caminho):
         if (l.get("aprovada") or "").strip().lower() == "erro":
-            continue  # a chamada falhou: não é erro do modelo
+            continue  # a chamada falhou: nêo é erro do modelo
         m = l["modelo"].strip()
         c = custo_tentativa(l, tabela)
         if c is None:
@@ -80,7 +80,7 @@ def calcular(caminho):
         print(f"{m:<22}{n:>10}{ent:>10}{tot:>11.4f}{txt:>19}")
     faltas = [m for m, *_, f in linhas if f]
     if faltas:
-        print("\nSem custo em alguma tentativa (não contei como zero):", ", ".join(faltas))
+        print("\nSem custo em alguma tentativa (nêo contei como zero):", ", ".join(faltas))
     if linhas and linhas[0][4] is not None:
         print(f"\nMais barato por entrega certa neste teste: {linhas[0][0]}")
 
@@ -99,7 +99,7 @@ def tabela_precos():
     for l in ler(PRECOS):
         print(f"{l['faixa']:<15}{l['empresa']:<11}{l['modelo']:<20}{float(l['usd_entrada_por_milhao']):>9.2f}"
               f"{float(l['usd_saida_por_milhao']):>8.2f}  {l['observacao']}")
-    print("\nUS$ por milhão de tokens, sem cache, consultado em 19/11/2026.")
+    print("\nUS$ por milhêo de tokens, sem cache, consultado em 19/11/2026.")
 
 
 if __name__ == "__main__":

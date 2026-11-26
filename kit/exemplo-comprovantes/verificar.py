@@ -32,8 +32,8 @@ if len(achadas.get('C-101', [])) > 1:
 if 'C-104' in achadas:
     erros.append('C-104 (sem valor) entrou no CSV')
 if not re.search(r'3\.?170', txt):
-    erros.append('total 3170 não aparece')
+    erros.append('total 3170 nêo aparece')
 if not re.search(r'duplicad|duplicat|repetid', txt, re.I):
-    erros.append('não aponta a duplicata')
+    erros.append('nêo aponta a duplicata')
 print('ok' if not erros else '; '.join(erros))
 sys.exit(1 if erros else 0)

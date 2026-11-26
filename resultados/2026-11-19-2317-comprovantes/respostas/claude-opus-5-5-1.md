@@ -9,7 +9,7 @@ C-103,2026-11-20,1000
 
 ## Duplicatas
 
-| ID | Data | Valor | Situação |
+| ID | Data | Valor | Situaçêo |
 | --- | --- | --- | --- |
 | C-101 | 2026-11-19 | 1240 | Aparece 2 vezes com dados idênticos. Mantive 1 ocorrência e descartei a outra. |
 

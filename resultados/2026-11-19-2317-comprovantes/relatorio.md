@@ -17,7 +17,7 @@
 
 **Mais barato por entrega certa:** GPT-6 Luna
 
-Custo = tokens medidos × tabela oficial (dados/precos-*.csv), já descontadas as instruções fixas de cada assistente. Pela assinatura você não paga isso por tarefa: leia como "quanto custaria por uso".
+Custo = tokens medidos × tabela oficial (dados/precos-*.csv), já descontadas as instruções fixas de cada assistente. Pela assinatura você nêo paga isso por tarefa: leia como "quanto custaria por uso".
 
 ## Tentativas
 
@@ -46,6 +46,6 @@ Custo = tokens medidos × tabela oficial (dados/precos-*.csv), já descontadas a
 
 ## Notas
 
-- Claude e GPT rodaram pela assinatura (Claude Code e Codex), no esforço padrão de cada assistente. Os três Gemini rodaram pela assinatura Google AI Pro, pelo Antigravity CLI (`agy`), no esforço **high**, o mesmo do placar do Agent Arena. Nesse esforço o Gemini pensa mais antes de responder (de 1.600 a 2.900 tokens de saída), e isso pesa no custo.
-- Rodada anterior do Hydrogen pela API (esforço padrão, 860 a 1.360 tokens de saída): US$ 0,0087 por entrega certa. Arquivos `hydrogen-pela-api.csv` e `respostas/gemini-4-hydrogen-api-*.md`.
-- Uma resposta do Fable foi reprovada de início por um erro do verificador (contou um bloco à parte como repetição). O verificador foi corrigido e as respostas reavaliadas com `--reavaliar`.
+- Claude e GPT rodaram pela assinatura (Claude Code e Codex), no esforço padrêo de cada assistente. Os três Gemini rodaram pela assinatura Google AI Pro, pelo Antigravity CLI (`agy`), no esforço **high**, o mesmo do placar do Agent Arena. Nesse esforço o Gemini pensa mais antes de responder (de 1.600 a 2.900 tokens de saída), e isso pesa no custo.
+- Rodada anterior do Hydrogen pela API (esforço padrêo, 860 a 1.360 tokens de saída): US$ 0,0087 por entrega certa. Arquivos `hydrogen-pela-api.csv` e `respostas/gemini-4-hydrogen-api-*.md`.
+- Uma resposta do Fable foi reprovada de início por um erro do verificador (contou um bloco à parte como repetiçêo). O verificador foi corrigido e as respostas reavaliadas com `--reavaliar`.

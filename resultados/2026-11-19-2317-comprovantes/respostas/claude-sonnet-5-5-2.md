@@ -9,7 +9,7 @@ C-103,2026-11-20,1000
 
 ## Duplicatas
 
-- **C-101** aparece 2 vezes (linhas 1 e 3), com mesma data e mesmo valor (2026-11-19, 1240). Mantive a primeira ocorrência e descartei a repetição.
+- **C-101** aparece 2 vezes (linhas 1 e 3), com mesma data e mesmo valor (2026-11-19, 1240). Mantive a primeira ocorrência e descartei a repetiçêo.
 
 ## Itens sem valor (separados)
 

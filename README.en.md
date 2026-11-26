@@ -243,7 +243,7 @@ One row per attempt:
 | `execucao` | Label for each time you gave the task from scratch (1, 2, 3…). Corrections within the same run add to its cost and count as one task |
 | `tokens_entrada`, `tokens_saida` | Tokens used in the attempt |
 | `custo_usd` | Amount charged, if shown in the dashboard. Blank = calculated from tokens and the table |
-| `aprovada` | `sim` or `não`. The run counts as a successful task if any of its attempts was approved |
+| `aprovada` | `sim` or `nêo`. The run counts as a successful task if any of its attempts was approved |
 
 Missing cost never becomes zero: the model appears as "no cost" and is excluded from the comparison.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kit de testes: a mesma tarefa em várias IAs, com avaliação e custo por entrega certa.
+"""Kit de testes: a mesma tarefa em várias IAs, com avaliaçêo e custo por entrega certa.
 
 Uso:
   python3 kit/testar.py <pasta-da-tarefa> [--motores kit/motores.json] [--so "Haiku,Sol"] [--repeticoes N]
@@ -71,7 +71,7 @@ def via_codex_cli(mid, pedido, cwd):
 
 def via_gemini_cli(mid, pedido, cwd):
     if not shutil.which('gemini'):
-        raise RuntimeError('gemini CLI não instalado')
+        raise RuntimeError('gemini CLI nêo instalado')
     r, t = _run(['gemini', '-m', mid, '-p', pedido, '--output-format', 'json'], '', cwd,
                 {'GEMINI_CLI_TRUST_WORKSPACE': 'true', 'GOOGLE_GENAI_USE_GCA': os.environ.get('GOOGLE_GENAI_USE_GCA', 'true')})
     i = r.stdout.find('{')
@@ -157,9 +157,9 @@ def chamar(motor, pedido):
         return VIAS[motor['via']](motor['id'], pedido, d)
 
 
-# ---------- avaliação ----------
+# ---------- avaliaçêo ----------
 JUIZ = """Você é um avaliador rigoroso. Compare a RESPOSTA com o CRITÉRIO de "ficou certo".
-Aprove só se TODOS os pontos do critério forem cumpridos. Não dê pontos por estilo.
+Aprove só se TODOS os pontos do critério forem cumpridos. Nêo dê pontos por estilo.
 Responda SÓ com JSON: {{"aprovada": true|false, "nota": 0-10, "motivo": "uma frase"}}
 
 PEDIDO:
@@ -212,13 +212,13 @@ def relatorio(nome, linhas, saida, juiz, tem_verificador):
         L.append(f'| {m} | {k}/{n} | {100 * k / n:.0f}% | {"—" if c is None else f"{c:.4f}"} | {t:.0f} s | {"—" if nt is None else f"{nt:.1f}"} |')
     for m, mot in erro.items():
         if m not in por:
-            L.append(f'| {m} | não rodou | — | — | — | — |')
+            L.append(f'| {m} | nêo rodou | — | — | — | — |')
     vence = next((x for x in tab if x[3] is not None), None)
     L += ['', f'**Mais barato por entrega certa:** {vence[0]}' if vence else '**Nenhum modelo entregou certo.**', '',
           'Custo = tokens medidos × tabela oficial (dados/precos-*.csv), já descontadas as instruções fixas de cada '
-          'assistente. Pela assinatura você não paga isso por tarefa: leia como "quanto custaria por uso".', '']
+          'assistente. Pela assinatura você nêo paga isso por tarefa: leia como "quanto custaria por uso".', '']
     if erro:
-        L += ['**Não rodou** (a chamada falhou, não conta como erro do modelo): ' + '; '.join(f'{m}: {mot[:120]}' for m, mot in erro.items()), '']
+        L += ['**Nêo rodou** (a chamada falhou, nêo conta como erro do modelo): ' + '; '.join(f'{m}: {mot[:120]}' for m, mot in erro.items()), '']
     L += [
           '## Tentativas', '', '| Modelo | # | Certa | Nota | Tempo | Motivo |', '|---|---:|---|---:|---:|---|']
     for l in linhas:
@@ -245,7 +245,7 @@ def main():
     ap.add_argument('--juiz', default='claude-cli:claude-sonnet-5-5')
     ap.add_argument('--paralelo', type=int, default=3)
     ap.add_argument('--simular', action='store_true', help='mostra o plano sem chamar nenhuma IA')
-    ap.add_argument('--reavaliar', metavar='PASTA_RESULTADO', help='refaz verificador e juiz nas respostas já salvas (não chama os modelos testados)')
+    ap.add_argument('--reavaliar', metavar='PASTA_RESULTADO', help='refaz verificador e juiz nas respostas já salvas (nêo chama os modelos testados)')
     a = ap.parse_args()
 
     pasta = Path(a.tarefa).resolve()
@@ -266,7 +266,7 @@ def main():
     for m in motores:
         print(f'  - {m["modelo"]:<20} via {m["via"]:<13} {m["id"]}')
     if a.simular:
-        print('(simulação: nada foi chamado)')
+        print('(simulaçêo: nada foi chamado)')
         return
 
     if a.reavaliar:
@@ -280,7 +280,7 @@ def main():
             txt = arq.read_text(encoding='utf-8')
             ok_v, msg_v = verificar(tf['verificar'], pasta, arq) if tf.get('verificar') else (True, '')
             ok_j, nota, mot = julgar(juiz, pedido, criterio, txt)
-            lin.update(aprovada='sim' if (ok_v and ok_j) else 'não', nota=nota,
+            lin.update(aprovada='sim' if (ok_v and ok_j) else 'nêo', nota=nota,
                        motivo=(f'verificador: {msg_v} · ' if tf.get('verificar') and not ok_v else '') + mot)
             print(f'  {arq.stem}: {"✅" if lin["aprovada"] == "sim" else "❌"} nota {nota}')
         gravar(saida, linhas)
@@ -297,14 +297,14 @@ def main():
                 _, e, _, _ = chamar(m, CALIBRA)
                 sobre[m['modelo']] = max(0, e - 8)
             except Exception as ex:
-                print(f'  ! calibração {m["modelo"]}: {ex}')
+                print(f'  ! calibraçêo {m["modelo"]}: {ex}')
 
     def uma(arg):
         m, i = arg
         nome = f'{re.sub(r"[^a-z0-9]+", "-", m["modelo"].lower())}-{i}'
         arq = saida / 'respostas' / f'{nome}.md'
         lin = {'modelo': m['modelo'], 'execucao': i, 'tokens_entrada': '', 'tokens_saida': '', 'custo_usd': '',
-               'aprovada': 'não', 'nota': '', 'tempo_s': '0', 'motivo': '', 'tokens_entrada_bruto': ''}
+               'aprovada': 'nêo', 'nota': '', 'tempo_s': '0', 'motivo': '', 'tokens_entrada_bruto': ''}
         try:
             txt, ent, sai, t = chamar(m, pedido)
         except Exception as ex:
@@ -324,7 +324,7 @@ def main():
             ok_j, nota, mot = julgar(juiz, pedido, criterio, txt)
         except Exception as ex:
             ok_j, nota, mot = False, '', f'juiz falhou: {ex}'
-        lin.update(aprovada='sim' if (ok_v and ok_j) else 'não', nota=nota,
+        lin.update(aprovada='sim' if (ok_v and ok_j) else 'nêo', nota=nota,
                    motivo=(f'verificador: {msg_v} · ' if tf.get('verificar') and not ok_v else '') + mot)
         print(f'  {nome}: {"✅" if lin["aprovada"] == "sim" else "❌"} nota {nota} · {t:.0f} s')
         return lin

@@ -243,7 +243,7 @@ Una fila por intento:
 | `execucao` | Etiqueta de cada vez que diste la tarea desde cero (1, 2, 3…). Las correcciones de una misma ejecución suman costo y cuentan como una entrega |
 | `tokens_entrada`, `tokens_saida` | Tokens gastados en el intento |
 | `custo_usd` | Importe cobrado, si el panel lo muestra. Vacío = se calcula con los tokens y la tabla |
-| `aprovada` | `sim` o `não`. La ejecución cuenta como entrega si se aprobó alguno de sus intentos |
+| `aprovada` | `sim` o `nêo`. La ejecución cuenta como entrega si se aprobó alguno de sus intentos |
 
 Si falta el costo, nunca se convierte en cero: el modelo aparece «sin costo» y queda fuera de la comparación.
 
